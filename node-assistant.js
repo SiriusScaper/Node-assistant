@@ -45,13 +45,13 @@ function searchMovie(defaultMovie) {
 			let actors = jsonReturn.Actors;
 
 			console.log(`Movie title: ${movie}
-        Year:  ${year}
-        IMBD Rating: ${IMDBrating}
-        Rotten Tomatoes Rating: ${RTrating}
-        Country: ${country}
-        Language: ${language}
-        Plot: ${plot}
-        Actors: ${actors}`);
+            Year:  ${year}
+            IMBD Rating: ${IMDBrating}
+            Rotten Tomatoes Rating: ${RTrating}
+            Country: ${country}
+            Language: ${language}
+            Plot: ${plot}
+            Actors: ${actors}`);
 		}
 	});
 }
@@ -103,7 +103,7 @@ function searchThisSong(defaultSong) {
 		if (data.tracks.items.length > 0) {
 			for (let i = 0; i < data.tracks.items[0].artists.length; i++) {
 				console.log(`${data.tracks.items[0].artists[i].name}
-                    `);
+                `);
 			}
 		}
 		console.log(`${data.tracks.items[0].name}`);
@@ -148,4 +148,5 @@ function doThisInstead() {
 	});
 }
 
+// fs.appendFile('message.txt', ',', process.argv[3], runThis());
 runThis();
