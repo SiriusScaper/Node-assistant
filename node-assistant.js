@@ -25,7 +25,7 @@ function runThis() {
 let movieName = '';
 
 function searchMovie(defaultMovie) {
-	let movieTitle = defaultMovie || process.argv[3] || 'Star Wars';
+	let movieTitle = defaultMovie || process.argv[3] || 'Mr. Nobody';
 
 	request('http://www.omdbapi.com/?apikey=trilogy&t=' + movieTitle, function(
 		error,
@@ -86,26 +86,48 @@ let spotify = new Spotify({
 	secret: keys.spotify.secret
 });
 
+// function searchThisSong() {
+// 	spotify
+// 		.search({ type: 'track', query: process.argv[3] })
+// 		.then(function(response) {
+// 			console.log(response);
+// 		})
+// 		.catch(function(err) {
+// 			console.log(err);
+// 		});
+// }
 function searchThisSong(defaultSong) {
 	let song = defaultSong || process.argv[3] || 'The Sign Ace of Base';
-	spotify
-		.search({ type: 'track', query: song, limit: 1 })
-		.then(function(data) {
-			if (data.tracks.items.length > 0) {
-				for (let i = 0; i < data.tracks.items[0].artists.length; i++) {
-					console.log(`${data.tracks.itmes[0].artists[i].name}
+	spotify.search({ type: 'track', query: song }, function(error, data) {
+		if (error) throw error;
+		if (data.tracks.items.length > 0) {
+			for (let i = 0; i < data.tracks.items[0].artists.length; i++) {
+				console.log(`${data.tracks.items[0].artists[i].name}
                     `);
-				}
 			}
-			console.log(`${data.tracks.itmes[0].name}
-            ${data.tracks.itmes[0].preview_url}
-            ${data.tracks.itmes[0].album.name}
-            `);
-		})
-		.catch(function(err) {
-			console.log(err);
-		});
+		}
+		console.log(`${data.tracks.items[0].name}`);
+		console.log(`${data.tracks.items[0].preview_url}`);
+		console.log(`${data.tracks.items[0].album.name}`);
+	});
 }
+// 	spotify.search({ type: 'track', query: song, limit: 1 })
+// 		function(data, err) {
+// 			if (data.tracks.items.length > 0) {
+// 				for (let i = 0; i < data.tracks.items[0].artists.length; i++) {
+// 					console.log(`${data.tracks.itmes[0].artists[i].name}
+//                      `);
+// 				}
+// 			}
+// 			console.log(`${data.tracks.itmes[0].name}
+//              ${data.tracks.itmes[0].preview_url}
+//              ${data.tracks.itmes[0].album.name}
+//              `);
+// 		}
+// 		.catch(function(err) {
+// 			console.log(err);
+// 		};
+// }
 
 //do-what-it-says functionality
 function doThisInstead() {

@@ -1,4 +1,2 @@
-spotify-this-song,"Starman"
-
-searchMovie,"Star Wars"
+movie-this,"Star Wars"
 
