@@ -90,8 +90,17 @@ function searchThisSong(defaultSong) {
 	let song = defaultSong || process.argv[3] || 'The Sign Ace of Base';
 	spotify
 		.search({ type: 'track', query: song, limit: 1 })
-		.then(function(response) {
-			console.log(response);
+		.then(function(data) {
+			if (data.tracks.items.length > 0) {
+				for (let i = 0; i < data.tracks.items[0].artists.length; i++) {
+					console.log(`${data.tracks.itmes[0].artists[i].name}
+                    `);
+				}
+			}
+			console.log(`${data.tracks.itmes[0].name}
+            ${data.tracks.itmes[0].preview_url}
+            ${data.tracks.itmes[0].album.name}
+            `);
 		})
 		.catch(function(err) {
 			console.log(err);
