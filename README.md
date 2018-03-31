@@ -1,2 +1,2 @@
-# chatbot-node-app
+# Node-assistant
 I refuse to name it liri (Besides that name is already in use https://liri.io/)
